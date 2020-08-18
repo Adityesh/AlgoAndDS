@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 
 // Steps:
-// 1. Take first element as the min element
-// 2. Scan the rest of the list for the min element
-// 3. Swap the min element with the first element.
-// 4. Change the min pointer to the next element.
-// 5. Repeat above steps till end of the list.
+// For all elements in the list
+// Compare two consecutive elements and swap
+// if they are not in order
+// Continue swapping until the end of the list
 
 
-public class SelectionSort {
+
+public class BubbleSort {
     public static void main(String[] args) {
         // Input the number of elements for the unsorted array
         Scanner s = new Scanner(System.in);
@@ -32,25 +32,20 @@ public class SelectionSort {
         
         // Print sorted array to stdout
         System.out.println("Sorted array: ");
-        int[] sorted = selectionSort(arr);
+        int[] sorted = bubbleSort(arr);
         for(int i : sorted) {
              System.out.print(i + " ");
         }
     }
     
-    public static int[] selectionSort(int[] arr) {
+    public static int[] bubbleSort(int[] arr) {
         int n = arr.length;
-        for(int i = 0; i<n - 1;i++) {
-            int min = i;
-            for(int j= i+1;j<n;j++) {
-                if(arr[j] < arr[min]) {
-                    min = j;
-                }
+        for(int i = 0;i<n-1;i++) {
+            if(arr[i] > arr[i+1]) {
+                int temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
             }
-            
-            int temp = arr[i];
-            arr[i] = arr[min];
-            arr[min] = temp;
         }
         
         return arr;
